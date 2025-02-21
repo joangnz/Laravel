@@ -8,6 +8,7 @@ use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\CalendarEventController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\RoleController;
 
 // Rutas públicas (No requieren token)
 Route::post('/register', [AuthController::class, 'register']); // Registro
@@ -60,4 +61,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/messages/conversation/{userId}', [MessageController::class, 'conversation']);
     Route::put('/messages/{id}/read', [MessageController::class, 'markAsRead']);
     Route::delete('/messages/{id}', [MessageController::class, 'destroy']);
+
+    // Rutas para el controlador de roles
+    Route::get('/roles', [RoleController::class, 'index']);
+    Route::post('/roles', [RoleController::class, 'store']);
+    Route::post('/users/{userId}/assign-role', [RoleController::class, 'assignRole']);
+    Route::post('/users/{userId}/remove-role', [RoleController::class, 'removeRole']);
 });
