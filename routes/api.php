@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\SubmissionController;
 
 // Rutas públicas (No requieren token)
 Route::post('/register', [AuthController::class, 'register']); // Registro
@@ -28,4 +30,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/subjects/{id}', [SubjectController::class, 'show']);
     Route::put('/subjects/{id}', [SubjectController::class, 'update']);
     Route::delete('/subjects/{id}', [SubjectController::class, 'destroy']);
+
+    // Rutas para el controlador de tareas
+    Route::get('/assignments', [AssignmentController::class, 'index']);
+    Route::post('/assignments', [AssignmentController::class, 'store']);
+    Route::get('/assignments/{id}', [AssignmentController::class, 'show']);
+    Route::put('/assignments/{id}', [AssignmentController::class, 'update']);
+    Route::delete('/assignments/{id}', [AssignmentController::class, 'destroy']);
+
+    // Rutas para el controlador de entregas
+    Route::get('/submissions', [SubmissionController::class, 'index']);
+    Route::post('/submissions', [SubmissionController::class, 'store']);
+    Route::get('/submissions/{id}', [SubmissionController::class, 'show']);
+    Route::get('/submissions/{id}', [SubmissionController::class, 'update']);
+    // Route::delete('/submissions/{id}', [SubmissionController::class, 'destroy']);
+
+
 });
