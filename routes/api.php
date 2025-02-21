@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\SubjectController;
 
 // Rutas públicas (No requieren token)
 Route::post('/register', [AuthController::class, 'register']); // Registro
@@ -20,4 +21,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/courses/{id}', [CourseController::class, 'show']); // Obtener un curso específico
     Route::put('/courses/{id}', [CourseController::class, 'update']); // Actualizar un curso específico
     Route::delete('/courses/{id}', [CourseController::class, 'destroy']); // Eliminar un curso específico
+
+    // Rutas para el controlador de asignaturas
+    Route::get('/subjects', [SubjectController::class, 'index']);
+    Route::post('/subjects', [SubjectController::class, 'store']);
+    Route::get('/subjects/{id}', [SubjectController::class, 'show']);
+    Route::put('/subjects/{id}', [SubjectController::class, 'update']);
+    Route::delete('/subjects/{id}', [SubjectController::class, 'destroy']);
 });
