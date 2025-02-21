@@ -6,6 +6,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\SubmissionController;
+use App\Http\Controllers\CalendarEventController;
 
 // Rutas públicas (No requieren token)
 Route::post('/register', [AuthController::class, 'register']); // Registro
@@ -45,5 +46,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/submissions/{id}', [SubmissionController::class, 'update']);
     // Route::delete('/submissions/{id}', [SubmissionController::class, 'destroy']);
 
-
+    // Rutas para el controlador de eventos del calendario
+    Route::get('/calendar', [CalendarEventController::class, 'index']);
+    Route::post('/calendar', [CalendarEventController::class, 'store']);
+    Route::get('/calendar/{id}', [CalendarEventController::class, 'show']);
+    Route::put('/calendar/{id}', [CalendarEventController::class, 'update']);
+    Route::delete('/calendar/{id}', [CalendarEventController::class, 'destroy']);
 });
