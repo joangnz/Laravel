@@ -7,6 +7,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\CalendarEventController;
+use App\Http\Controllers\MessageController;
 
 // Rutas públicas (No requieren token)
 Route::post('/register', [AuthController::class, 'register']); // Registro
@@ -52,4 +53,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/calendar/{id}', [CalendarEventController::class, 'show']);
     Route::put('/calendar/{id}', [CalendarEventController::class, 'update']);
     Route::delete('/calendar/{id}', [CalendarEventController::class, 'destroy']);
+
+    // Rutas para el controlador de mensajes
+    Route::get('/messages', [MessageController::class, 'index']);
+    Route::post('/messages', [MessageController::class, 'store']);
+    Route::get('/messages/conversation/{userId}', [MessageController::class, 'conversation']);
+    Route::put('/messages/{id}/read', [MessageController::class, 'markAsRead']);
+    Route::delete('/messages/{id}', [MessageController::class, 'destroy']);
 });
