@@ -19,7 +19,6 @@ class SubmissionController extends Controller
      * Create a new submission (Registrar una entrega).
      */
     public function store(Request $request)
-
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
@@ -36,6 +35,7 @@ class SubmissionController extends Controller
             201
         );
     }
+
     /**
      * Show a specific submission (Mostrar entrega).
      */
@@ -53,6 +53,7 @@ class SubmissionController extends Controller
             200
         );
     }
+
     /**
      * Update submission (e.g. grading) (Actualizar entrega).
      */
@@ -77,23 +78,4 @@ class SubmissionController extends Controller
             200
         );
     }
-
-    /**
-     * Delete a submission (Eliminar entrega).
-     */
-    // public function destroy($id)
-    // {
-    //     $submission = Submission::find($id);
-    //     if (!$submission) {
-    //         return response()->json(
-    //             ['message' => 'Submission not found'],
-    //             404
-    //         );
-    //     }
-    //     $submission->delete();
-    //     return response()->json(
-    //         ['message' => 'Submission deleted successfully'],
-    //         200
-    //     );
-    // }
 }

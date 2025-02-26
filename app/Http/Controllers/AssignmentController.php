@@ -43,7 +43,7 @@ class AssignmentController extends Controller
         $assignment = Assignment::find($id);
         if (!$assignment) {
             return response()->json(
-                ['message' => 'Assignment not sfound'],
+                ['message' => 'Assignment not found'],
                 404
             );
         }

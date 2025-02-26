@@ -13,7 +13,8 @@ class CalendarEvent extends Model
         'title',
         'description',
         'start',
-        'end'
+        'end',
+        'user_id',
     ];
 
     /**

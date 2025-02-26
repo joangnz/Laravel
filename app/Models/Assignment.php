@@ -12,7 +12,9 @@ class Assignment extends Model
     protected $fillable = [
         'title',
         'description',
-        'due_date'
+        'due_date',
+        'subject_id',
+        'assignment_id',
     ];
 
     /**

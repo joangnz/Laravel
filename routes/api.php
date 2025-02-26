@@ -45,8 +45,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/submissions', [SubmissionController::class, 'index']);
     Route::post('/submissions', [SubmissionController::class, 'store']);
     Route::get('/submissions/{id}', [SubmissionController::class, 'show']);
-    Route::get('/submissions/{id}', [SubmissionController::class, 'update']);
-    // Route::delete('/submissions/{id}', [SubmissionController::class, 'destroy']);
+    Route::put('/submissions/{id}', [SubmissionController::class, 'update']);
 
     // Rutas para el controlador de eventos del calendario
     Route::get('/calendar', [CalendarEventController::class, 'index']);
